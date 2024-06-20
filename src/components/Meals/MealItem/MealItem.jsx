@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import classes from "./MealItem.module.css";
+import MealItemForm from "./MealItemForm";
 function MealItem({ name, description, price }) {
   const pricee = `$${price.toFixed(2)}`
   return (
@@ -9,7 +10,9 @@ function MealItem({ name, description, price }) {
         <div className={classes.description}>{description}</div>
         <div className={classes.price}>{pricee}</div>
       </div>
-      <div></div>
+      <div>
+        <MealItemForm/>
+      </div>
     </li>
   );
 }
