@@ -27,7 +27,7 @@ function Modal({ children, onClose }) {
 }
 
 ModalOverlay.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array,
 };
 Modal.propTypes = {
   children: PropTypes.element,
