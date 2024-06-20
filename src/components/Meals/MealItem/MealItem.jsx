@@ -1,8 +1,19 @@
 import PropTypes from "prop-types";
 import classes from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
-function MealItem({ name, description, price }) {
+import { useContext } from "react";
+import CartContext from "../../../context/cart-context";
+function MealItem({ name, description, price, id }) {
+  const cartCtx = useContext(CartContext)
   const pricee = `$${price.toFixed(2)}`
+  function addToCartHandler(amount) {
+    cartCtx.addItem({
+      id: id,
+      name: name,
+      amount: amount,
+      price: price
+    })
+  }
   return (
     <li className={classes.meal}>
       <div>
@@ -11,7 +22,7 @@ function MealItem({ name, description, price }) {
         <div className={classes.price}>{pricee}</div>
       </div>
       <div>
-        <MealItemForm/>
+        <MealItemForm onAddToCart={addToCartHandler} />
       </div>
     </li>
   );
@@ -21,6 +32,7 @@ MealItem.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   price: PropTypes.number,
+  id: PropTypes.string,
 };
 
 export default MealItem;
