@@ -16,7 +16,7 @@ function cartReducer(state, action) {
       totalAmount: updatedTotalAmount,
     };
   } else if (action.type === "REMOVE") {
-    return
+    return {}
   }
   return defaultCartState;
 }

@@ -30,7 +30,7 @@ ModalOverlay.propTypes = {
   children: PropTypes.array,
 };
 Modal.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array,
   onClose: PropTypes.func
 };
 Backdrop.propTypes = {
