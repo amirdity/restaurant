@@ -3,16 +3,26 @@ import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import { useContext } from "react";
 import CartContext from "../../context/cart-context";
+import CartItem from "./CartItem.jsx";
 function Cart({ onHideCart }) {
   const cartCtx = useContext(CartContext);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   // i didnt use hooks but this variable works as useState because whene it renders it cant be rerenders and it renders just once
+
   const hasItems = cartCtx.items.length > 0;
-  console.log("cart has been rendered")
+  function cartItemRemoveHandler(id) {}
+  function cartItemAddHandler(item) {}
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
-        <li key={item.id}>{item.name}</li>
+        <CartItem
+          key={item.id}
+          name={item.name}
+          price={item.price}
+          amount={item.amount}
+          onRemove={cartItemRemoveHandler.bind(null, item.id)}
+          onAdd={cartItemAddHandler.bind(null, item)}
+        />
       ))}
     </ul>
   );
